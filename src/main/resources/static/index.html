@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Assignment</title>
+	<title>Getting Started: Serving Web Content</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link href="./bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="./assets/icons/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
@@ -16,18 +16,20 @@
 
 </head>
 
-<body>
+<body style="background-image: url('INDUSRT.jpg');background-repeat: no-repeat;background-attachment: fixed;
+  background-size: cover;">
+
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2" style="background-color: green;">
+			<div class="col-md-2" style="background-color: grey;">
 
 			</div>
 			<div class="col-sm-12 col-md-10">
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
-					<div class="container">
+					<div class="container" >
 				
 						<a class="navbar-brand" href="#">
-							<img src="./assets/images/zesco_logo.jpg" style="display: inline-block;" alt="" height="50">
+							<img src="./assets/images/zesco_logo.jpg" style="display: inline-block;" alt="" height="90">
 						</a>
 				
 						<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -51,7 +53,7 @@
 		
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2 "  style="padding-top: 40px; background-color: green; color: white;">
+			<div class="col-md-2 "  style="padding-top: 30px; background-color: green; color: white;">
 				<div>
 					<ul class="nav flex-column">
 					<li class="nav-item side-nav-option" id="welcomeView" onClick="changeView(this.id)">
@@ -82,31 +84,31 @@
 				<div id="welcome" >
 					<img src="./assets/images/zesco_logo.jpg" alt="logo" class="image-logo" />
 					<p class="welcome-text">
-						Welcome to Zesco Limited Issue Tracking Web App
+					TO TRACK ALL ZESCO ISSUES 
+					WELCOME TO THE ISSUE TRACKING WEBSITE
 					</p>
 					<button type="button" class="btn btn-success mb-3"><a href="login.html"
-							style="color: #fff;text-decoration: none;">Login</a></button>
+							style="color: orange;text-decoration: none;">Login</a></button>
 					<button type="button" class="btn btn-light mb-3"><a href="register.html"
-							style="color: #000;text-decoration: none;">Register</a></button>
+							style="color: orange;;text-decoration: none;">Register</a></button>
 				</div>
 				<div id="equipment" class="disappear">
-					<form onsubmit="addEquip()" action="#" onreset="cancelIssuePost()">
-						<div class="mb-3">
-							<label for="equipmentName" class="form-label">Name</label>
-							<input type="text" class="form-control" id="equipmentName" placeholder="Enter equipment name" required>
-						</div>
-						<div class="mb-3">
-							<label for="equipmentDesc" class="form-label">Description</label>
-							<textarea class="form-control" id="equipmentDesc" rows="3"
-								placeholder="Enter equipment description here..." required></textarea>
-						</div>
-						<button type="submit" class="btn btn-success mb-3" onsubmit="e=>{e.preventDefault()}">Save</button>
-						<button type="reset" class="btn btn-danger mb-3">Cancel</button>
-					</form>
-					
-
+					<div class="mb-3">
+						<label for="equipmentName" class="form-label">Name</label>
+						<input type="text" class="form-control" id="equipmentName" placeholder="Enter equipment name" required>
+					</div>
+					<div class="mb-3">
+						<label for="equipmentDesc" class="form-label">Description</label>
+						<textarea class="form-control" id="equipmentDesc" rows="3" placeholder="Enter equipment description here..."
+							required></textarea>
+					</div>
+					<button type="button" class="btn btn-success mb-3" onClick="addEquip()">Save</button>
+					<button type="button" onClick="cancelEquipPost()" class="btn btn-danger mb-3">Cancel</button>
+				
+				
+				
 					<h2>Available Equipments</h2>
-					
+				
 					<table id="equipmentList">
 						<thead>
 							<tr>
@@ -120,28 +122,26 @@
 					</table>
 				</div>
 				<div id="issue" class="disappear">
-					<form onsubmit="addIssue()" action="#" onreset="cancelIssuePost()"  >
-						<label class="form-label"
-							style="display: block;margin-top: 50px;line-height: 1px; margin-bottom: 0;padding-bottom: 0;">Equipment</label>
-						<select class="form-select form-select-lg mb-3" id="equipmentSelect" style="padding: 7px; margin-top: 20px;width: 50%;"
-							aria-label=".form-select-lg example">
-						
-						</select>
-						<div class="mb-3">
-							<label for="issueDesc" class="form-label">Description</label>
-							<textarea class="form-control" id="issueDesc" rows="3" placeholder="Enter issue description here..." required></textarea>
-						</div>
-						<div class="mb-3">
-							<label for="issueLocation" class="form-label">Location</label>
-							<input type="text" class="form-control" id="issueLocation" placeholder="Enter Location..." required>
-						</div>
-						
-						<button type="submit" class="btn btn-success mb-3" onClick="(event)=>{event.preventDefault()}">Save</button>
-						<button type="reset"  class="btn btn-danger mb-3" onClick="(event)=>{event.preventDefault()}">Cancel</button>
-						
-					</form>
+					<label class="form-label"
+						style="display: block;margin-top: 50px;line-height: 1px; margin-bottom: 0;padding-bottom: 0;">Equipment</label>
+					<select class="form-select form-select-lg mb-3" id="equipmentSelect"
+						style="padding: 7px; margin-top: 20px;width: 50%;" aria-label=".form-select-lg example">
+				
+					</select>
+					<div class="mb-3">
+						<label for="issueDesc" class="form-label">Description</label>
+						<textarea class="form-control" id="issueDesc" rows="3" placeholder="Enter issue description here..."
+							required></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="issueLocation" class="form-label">Location</label>
+						<input type="text" class="form-control" id="issueLocation" placeholder="Enter Location..." required>
+					</div>
+				
+					<button type="button" class="btn btn-success mb-3" onClick="addIssue()">Save</button>
+					<button type="button" class="btn btn-danger mb-3" onClick="cancelIssuePost()">Cancel</button>
 					<h2>Available Issues</h2>
-					
+				
 					<table id="issueList">
 						<thead>
 							<tr id="100">
@@ -158,14 +158,14 @@
 					</table>
 				</div>
 				<div id="about" class="disappear">
+					<p class="credentials" style="color:oranges"><B>
+						 STUDENT IDENTIFICATION NUMBER:18122983 
+					</B></p>
 					<p class="credentials">
-						SIN:   18124104
+						Name:  BANDA DALISO
 					</p>
 					<p class="credentials">
-						Name:  Andrew Simukoko
-					</p>
-					<p class="credentials">
-						Program: Bachelor Of Science In Computer Engineering
+						Program: BSC COMPUTER SCIENCE
 					</p>
 
 				</div>

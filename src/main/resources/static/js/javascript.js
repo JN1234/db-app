@@ -13,7 +13,7 @@ function login() {
   }
   console.log(info)
 
-  fetch("https://java-issue-app.herokuapp.com/users/login", {
+  fetch("https://resourcesmanagementapplication.herokuapp.com/users/login", {
     method: "post",
     headers: {
       'Accept': 'application/json',
@@ -85,7 +85,7 @@ function registerUser() {
   }
   console.log(info2)
 
-  fetch("https://java-issue-app.herokuapp.com/users/create", {
+  fetch("https://resourcesmanagementapplication.herokuapp.com/users/create", {
     method: "post",
     headers: {
       'Accept': 'application/json',
@@ -135,9 +135,9 @@ function addEquip() {
   var description = document.getElementById('equipmentDesc').value;
 
   var name = document.getElementById('equipmentName').value;
+var info;
 
-
-  fetch("https://java-issue-app.herokuapp.com/equips/read")
+  fetch("https://resourcesmanagementapplication.herokuapp.com/equips/read")
     .then(response => response.json())
     .then(equips => {
 
@@ -148,13 +148,13 @@ function addEquip() {
 
 
 
-      var info = {
+      info = {
         description, name, id: equipsId
       }
 
       console.log(info)
 
-      fetch("https://java-issue-app.herokuapp.com/equips/create", {
+      fetch("https://resourcesmanagementapplication.herokuapp.com/equips/create", {
         method: "post",
         headers: {
           'Accept': 'application/json',
@@ -168,6 +168,10 @@ function addEquip() {
 
           window.alert(response[0]);
 
+      equipmentSelect = document.getElementById('equipmentSelect');
+     
+
+        equipmentSelect.options[equipmentSelect.options.length] = new Option(`${info.name}`, `${info.id}`);
           var rows = "";
 
 
@@ -196,7 +200,7 @@ function addIssue() {
   var month = new Date().getMonth().toString();
   var day = new Date().getDate().toString();
 
-  fetch("https://java-issue-app.herokuapp.com/issues/read")
+  fetch("https://resourcesmanagementapplication.herokuapp.com/issues/read")
     .then(response => response.json())
     .then(issues => {
       var issuesId = 0;
@@ -209,7 +213,7 @@ function addIssue() {
       }
 
       console.log(info)
-      fetch("https://java-issue-app.herokuapp.com/issues/create", {
+      fetch("https://resourcesmanagementapplication.herokuapp.com/issues/create", {
         method: "post",
         headers: {
           'Accept': 'application/json',
@@ -235,10 +239,25 @@ function addIssue() {
 
 
 
-}
-function cancelIssuePost() {
+}function cancelIssuePost() {
 
   console.log("reset form")
+  
+  var description = document.getElementById('issueDesc').value="";
+
+  var location = document.getElementById('issueLocation').value="";
+  var selects = document.getElementById('equipmentSelect').value="0";
+
+
+}
+function cancelEquipPost() {
+
+  console.log("reset form")
+  
+ 
+  var description = document.getElementById('equipmentDesc').value="";
+
+  var name = document.getElementById('equipmentName').value="";
 
 }
 function getEquips() {
@@ -254,7 +273,7 @@ function getEquips() {
     login.className="nav-item side-nav-option";
 
   }
-  fetch("https://java-issue-app.herokuapp.com/equips/read")
+  fetch("https://resourcesmanagementapplication.herokuapp.com/equips/read")
     .then(response => response.json())
     .then(data => {
 
@@ -280,11 +299,11 @@ function getIssues() {
 
   var equipment = [];
 
-  fetch("https://java-issue-app.herokuapp.com/equips/read")
+  fetch("https://resourcesmanagementapplication.herokuapp.com/equips/read")
     .then(response => response.json())
     .then(data => {
       equipment = data;
-      fetch("https://java-issue-app.herokuapp.com/issues/read")
+      fetch("https://resourcesmanagementapplication.herokuapp.com/issues/read")
         .then(response => response.json())
         .then(issues => {
 
@@ -344,7 +363,7 @@ function deleteIssue(e) {
 
   console.log(info)
 
-  fetch("https://java-issue-app.herokuapp.com/issues/delete", {
+  fetch("https://resourcesmanagementapplication.herokuapp.com/issues/delete", {
     method: "delete",
     headers: {
       'Accept': 'application/json',
@@ -370,7 +389,7 @@ function deleteEquip(e) {
 
   console.log(info)
 
-  fetch("https://java-issue-app.herokuapp.com/equips/delete", {
+  fetch("https://resourcesmanagementapplication.herokuapp.com/equips/delete", {
     method: "delete",
     headers: {
       'Accept': 'application/json',
@@ -405,7 +424,7 @@ function updateIssue() {
     window.alert("Only Supervisor can provide feedback.Please log in as superviser")
   }
   else {
-    fetch("https://java-issue-app.herokuapp.com/issues/update", {
+    fetch("https://resourcesmanagementapplication.herokuapp.com/issues/update", {
       method: "put",
       headers: {
         'Accept': 'application/json',
